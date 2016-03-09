@@ -1,0 +1,8 @@
+- name: including global variables
+  include_vars: ../../../group_vars/globalvariables.yml
+
+- name: updating the yum repostories
+  yum: name=* state=latest
+ 
+- name: installing puppet agent
+  shell: curl -k https://{{ puppet_master_hostname }}:8140/packages/current/packages/install.bash | bash
