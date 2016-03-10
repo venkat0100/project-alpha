@@ -5,4 +5,14 @@
   yum: name=* state=latest
  
 - name: installing puppet agent
-  shell: curl -k https://{{ puppet_master_hostname }}:8140/packages/current/packages/install.bash | bash
+  shell: rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+  ignore_errors: true
+  
+- name: Installing puppet agent
+  yum: name=puppet  state=latest
+ 
+- name: configuring puppet on agent 
+  lineinfile: dest=/etc/puppet/puppet.conf line="server = {{ puppet_master_hostname }}"
+ 
+- name: sending request to puppet master
+  shell: puppet agent -t 

@@ -1,2 +1,2 @@
 ---
-puppet_master_hostname: venkat-chithari1.mylabserver.com
+puppet_master_hostname: ec2-54-187-158-241.us-west-2.compute.amazonaws.com
